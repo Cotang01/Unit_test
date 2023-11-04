@@ -3,7 +3,6 @@ package sem_1;
 import java.util.Collections;
 import java.util.List;
 
-
 public class Shop {
     private List<Product> products;
 
@@ -20,8 +19,8 @@ public class Shop {
      * @return отсортированный по возрастанию и цене список продуктов
      */
     public List<Product> getSortedListProducts() {
-    	this.products.sort((p1, p2) -> 
-    	Integer.compare(p1.getCost(), p2.getCost()));
+        this.products.sort((p1, p2) -> 
+        Integer.compare(p1.getCost(), p2.getCost()));
         return this.products;
     }
 

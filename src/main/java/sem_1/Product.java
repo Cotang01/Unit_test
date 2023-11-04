@@ -5,11 +5,11 @@ public class Product {
     private String title; // Название
 
     public Product(int cost, String title) {
-    	this.cost = cost;
-    	this.title = title;
-	}
+        this.cost = cost;
+        this.title = title;
+    }
 
-	public int getCost() {
+    public int getCost() {
         return cost;
     }
 
@@ -25,9 +25,9 @@ public class Product {
         this.title = title;
     }
 
-	@Override
-	public String toString() {
-		return "Цена: " + cost + ", Название: " + title;
-	}
-    
+    @Override
+    public String toString() {
+        return "Цена: " + cost + ", Название: " + title;
+    }
+
 }
