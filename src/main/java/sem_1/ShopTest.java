@@ -1,8 +1,9 @@
 package sem_1;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,12 +18,12 @@ public class ShopTest {
      * верный отсортированный по цене список продуктов
      */
 
-    private Shop shop;
-    private List<Product> products;
+    private static Shop shop;
+    private static List<Product> products;
 
     // Данный метод будет выполняться перед каждым тестом
-    @Before
-    public void setup() {
+    @BeforeAll
+    public static void setup() {
         // Создаём список продуктов
         products = new ArrayList<>();
 
@@ -44,13 +45,14 @@ public class ShopTest {
     // 1.
     @Test
     public void testShopContaintment() {
-
-        Assert.assertEquals("Список продуктов отличается от списка корзины", 
-                products, shop.getProducts());
-        Assert.assertTrue("Размер списка продуктов не совпадает", 
-                products.size() == 3);
-        Assert.assertTrue("Размер списка продуктов магазина не совпадает", 
-                shop.getProducts().size() == 3);
+        
+        assertAll("Содержимое магазина",
+                () -> assertEquals(products, shop.getProducts(), 
+                "Список продуктов отличается от списка корзины"),
+                () -> assertTrue(products.size() == 3, 
+                "Размер списка продуктов не совпадает"),
+                () -> assertTrue(shop.getProducts().size() == 3, 
+                "Размер списка продуктов магазина не совпадает"));
 
     }
 
@@ -59,9 +61,8 @@ public class ShopTest {
     public void testGetMostExpensiveProduct() {
         Product expect = Collections.max(products, (p1, p2) -> 
         Integer.compare(p1.getCost(), p2.getCost()));
-
-        Assert.assertEquals("Самые дорогие продукты не совпадают", 
-                expect, shop.getMostExpensiveProduct());
+        assertEquals(expect, shop.getMostExpensiveProduct(), 
+                "Самые дорогие продукты не совпадают");
     }
 
     // 3.
@@ -70,7 +71,7 @@ public class ShopTest {
         List<Product> expect = new ArrayList<>(products);
         expect.sort((p1, p2) -> Integer.compare(p1.getCost(), p2.getCost()));
 
-        Assert.assertEquals("Отсортированные списки продуктов не совпадают", 
-                expect, shop.getSortedListProducts());
+        assertEquals(expect, shop.getSortedListProducts(), 
+                "Отсортированные списки продуктов не совпадают");
     }
 }
