@@ -14,7 +14,6 @@
 .classpath
 .project
 .settings/
-pom.xml
 target/
 *.jar
 *.war
