@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class ShopTest {
+class ShopTest {
 
     /*
      * 1. Проверить, что магазин хранит верный список продуктов (количество
@@ -46,7 +46,7 @@ public class ShopTest {
 
     // 1.
     @Test
-    public void testShopContaintment() {
+    void testShopContaintment() {
         
         assertAll("Содержимое магазина",
                 () -> assertEquals(products, shop.getProducts(), 
@@ -60,7 +60,7 @@ public class ShopTest {
 
     // 2.
     @Test
-    public void testGetMostExpensiveProduct() {
+    void testGetMostExpensiveProduct() {
         Product expect = Collections.max(products, (p1, p2) -> 
         Integer.compare(p1.getCost(), p2.getCost()));
         assertEquals(expect, shop.getMostExpensiveProduct(), 
@@ -69,7 +69,7 @@ public class ShopTest {
 
     // 3.
     @Test
-    public void testGetSortedProductList() {
+    void testGetSortedProductList() {
         List<Product> expect = new ArrayList<>(products);
         expect.sort((p1, p2) -> Integer.compare(p1.getCost(), p2.getCost()));
 
