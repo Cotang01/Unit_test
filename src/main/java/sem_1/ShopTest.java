@@ -1,6 +1,7 @@
 package sem_1;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,17 +14,19 @@ public class ShopTest {
 
     /*
      * 1. Проверить, что магазин хранит верный список продуктов (количество
-     * продуктов, состав корзины) 2. Проверить, что магазин возвращает верный самый
-     * дорого продукт getMostExpensiveProduct 3. Проверить, что магазин возвращает
+     * продуктов, состав корзины) 
+     * 2. Проверить, что магазин возвращает верный самый
+     * дорого продукт getMostExpensiveProduct 
+     * 3. Проверить, что магазин возвращает
      * верный отсортированный по цене список продуктов
      */
 
-    private static Shop shop;
-    private static List<Product> products;
+    private Shop shop;
+    private List<Product> products;
 
     // Данный метод будет выполняться перед каждым тестом
-    @BeforeAll
-    public static void setup() {
+    @BeforeEach
+    public void setup() {
         // Создаём список продуктов
         products = new ArrayList<>();
 
