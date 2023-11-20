@@ -1,7 +1,3 @@
-package sem_2;
-
-import static org.assertj.core.api.Assertions.assertThat;
-
 import java.util.Scanner;
 
 public class Calculator {
@@ -94,14 +90,22 @@ public class Calculator {
         // purchaseAmount - сумма покупки
         // discountAmount - размер скидки
 
-        try {
-            assertThat(discountAmount).as("Проверка на размер скидки: от 0 до 100").
-            isBetween(0, 100);
-        } catch (AssertionError ae) {
-            throw new ArithmeticException("Недопустимый размер скидки" + 
-        ae.getMessage());
+        double discountedAmount = 0; // Сумма со скидкой (первоначальная сумма - скидка%)
+
+        if (purchaseAmount >= 0) {
+
+            if (discountAmount >= 0 && discountAmount <= 100) {
+                discountedAmount = purchaseAmount - (purchaseAmount * discountAmount) / 100;
+            } else {
+                throw new ArithmeticException("Скидка должна быть в диапазоне от 0 до 100%");
+            }
+
+        } else {
+            // Сумма покупки не может быть отрицательной
+            throw new ArithmeticException("Сумма покупки не может быть отрицательной");
         }
-        return purchaseAmount - (discountAmount * (discountAmount / 100.0));
+
+        return discountedAmount; // Метод должен возвращать сумму покупки со скидкой
     }
 
     //HW2.3L: Добавьте функцию возведения в степень в калькулятор и протестируйте
@@ -114,5 +118,15 @@ public class Calculator {
 
         }
         return result;
+    }
+
+    public double computeAreaCircle(double radius) {
+        return Math.PI * radius * radius;
+    }
+
+    //HW3.1L: Попробуйте реализовать в калькуляторе с помощью методологии TDD (с описанием шагов) функцию расчета длины окружности
+    // P=2πR
+    public double computeLengthCircle(int r) {
+        return 2*Math.PI*r;
     }
 }

@@ -6,7 +6,7 @@ import java.util.List;
 public class Homework {
 
     public static void main(String[] args) {
-        System.out.println(Calculator.calculateDiscount(800, 10));
+        System.out.println(Calculator.calculatingDiscount(800, 10));
         Shop myShop = new Shop();
         Product apple1 = new Product(20, "Яблоко");
         Product apple2 = new Product(40, "Ещё яблоко");
