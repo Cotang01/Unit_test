@@ -1,5 +1,6 @@
 package sem_4.book;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.withSettings;
@@ -37,11 +38,20 @@ class BookServiceTest {
     void testFindBookById() {
         when(bookService.findBookById("1")).thenReturn(book1);
         when(bookService.findBookById("2")).thenReturn(book2);
+        
+        Book result1 = bookService.findBookById("1");
+        assertEquals(book1, result1);
+
+        Book result2 = bookService.findBookById("2");
+        assertEquals(book2, result2);
     }
     
     @Test
     void testFindAllBooks() {
         when(bookService.findAllBooks()).thenReturn(books);
+        
+        List<Book> result = bookService.findAllBooks();
+        assertEquals(books, result);
     }
 
 }
